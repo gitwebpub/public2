@@ -1,0 +1,354 @@
+---
+title: "Data Review Meeting"
+author: "Dongweon Shin"
+date: "March 23 2025"
+
+format: 
+  revealjs:
+    css: styles.css
+    mathjax: 
+      url: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+      macros:
+        "\\eulerNum": "{\\mathit{#1}}"
+
+project:
+  type: website
+  output-dir: docs
+
+
+---
+## Recap
+
+- Need to work on:
+
+- Step 2, Viscous agent injection1 (3)
+
+- Step 3, Rhexis (4)
+
+- Step 4, Hydrodissection (5)
+
+- Step 5, Phaco (6)
+
+- Step 9, Viscous agent removal (7)
+
+- Step 10, Tonifying (8)
+
+# Results
+
+
+## logic3
+
+In essence, logic3 is a custom routine to:
+
+- Identify intervals between Phase 1 and Phase 8.
+
+- Evaluate each interval to see if there is enough evidence (using the "i07_Cannula" data) that the interval represents the start of Phase 2.
+
+- Return the interval and a measure (absolute difference) indicating how close its start is to a reference frame value.
+    
+
+## Magic behind the scenes
+The evaluation process within the logic3 function is focused on examining a set of candidate intervals to determine which one is most likely to represent the start of Phase 2. Here’s a detailed breakdown of how this evaluation works:
+
+1. Filtering Intervals:
+
+- Interval Validity:
+First, the function limits the candidate intervals to only those that 
+start after the Phase 1 start (phase1_start) and before the Phase 8 start (phase8_start). This ensures that only intervals within the expected window are considered.
+
+2. Iterating Over Valid Intervals:
+
+- For each valid interval (represented as a tuple (start, end)), the function performs the following steps:
+
+
+## Magic behind the scenes
+2.2 Counting Instrument Evidence:
+
+- Extracting Data:
+	- Using the mask, the function filters the DataFrame to obtain the subset of rows that match the candidate interval.
+
+- Summing the Evidence:
+	- It then sums the values in the "i07_Cannula" column for those rows. This sum (stored in [i07_count]{.hl1}) represents the amount of evidence (i.e., the count of i07_Cannula occurrences) within the candidate interval.
+
+
+## Magic behind the scenes
+
+2.3 Evaluating the [Evidence Threshold]{.hl1}:
+
+2.3.1 Threshold Check:
+
+- The function checks whether the summed evidence (i07_count) meets or exceeds a minimum threshold ([min_evidence]{.hl1}, defaulting to [1]{.hl1}).
+
+2.3.2 Selection Decision:
+
+- If the evidence is sufficient (i.e., i07_count >= min_evidence), 
+	that candidate interval is selected as the valid interval for Phase 2.
+
+
+- The loop then breaks, ensuring that the [earliest valid interval]{.hl1} (based on the order of the list) is chosen.
+
+## Magic behind the scenes
+
+3 Finalizing the Evaluation:
+
+3.1 Computing Difference:
+
+- Once a valid interval is found, the function calculates the absolute difference between the start of this interval and a provided reference frame value (ref_value). This metric (abs_diff) can be used to gauge how close the detected phase start is to an expected reference.
+
+3.2 Return Value:
+	- Finally, the function returns a tuple with:
+
+	- The absolute difference (abs_diff).
+
+	- The selected interval (start, end).
+
+- [If no interval meets the required conditions]{.hl1}, the function returns (None, None) to indicate that no valid interval was found.
+
+## Applying
+```python
+# Apply logic3()
+        abs_diff, selected_interval = summarizer.logic3(
+            corrected_intervals,
+            ref_value_phase2,
+            case_data,
+            phase1_start,
+            phase8_start,
+            min_evidence=1, // 
+            case_id=case_id
+        )
+```
+
+```python
+	if i07_count >= min_evidence:
+		selected_interval = (start, end)
+		print(f"✅ Found valid interval at {selected_interval} (i07_Cannula = {i07_count})")
+		break  # Select the earliest valid interval
+                
+```
+
+
+## Step 2, Viscous agent injection1 (3)
+
+- About 10 cases, Giving odd values 
+- 830, 292, 807, 295, 270, 278, ..
+
+```{R}
+
+library(DT)
+library(readxl)
+
+df <- read_excel("/Users/dshin/Dropbox/Lancet/cat101/finishing/phase2_predictions_2.xlsx")
+datatable(df,
+    filter = "top",
+    options = list(
+        scrollY = "300px",   # Set a max height with vertical scrolling
+        pageLength = 5,      # Show only 5 rows per page
+        lengthMenu = c(5, 10, 20, 50),  # Dropdown to adjust rows displayed
+        autoWidth = FALSE
+    )
+)
+
+```
+
+## Step 2, Viscous agent injection1 (3)
+- We decided to remove (830) for it has out of focus.
+- We decided to include i09 for (292), 
+- 807, 
+- 295, 
+- 270, 
+- 278,
+- 889,
+
+
+
+## Step 3, Rhexis (4)
+- Currently missing values for 4 cases: 292, 807, 922, 933
+
+
+
+```{R}
+
+library(DT)
+library(readxl)
+
+df <- read_excel("/Users/dshin/Dropbox/Lancet/cat101/finishing/phase3_predictions_1t.xlsx")
+datatable(df,
+    filter = "top",
+    options = list(
+        scrollY = "300px",   # Set a max height with vertical scrolling
+        pageLength = 5,      # Show only 5 rows per page
+        lengthMenu = c(5, 10, 20, 50),  # Dropdown to adjust rows displayed
+        autoWidth = FALSE
+    )
+)
+
+```
+
+## Step 4, Hydrodissection (5)
+- Currently missing values for 4 cases: 292, 807, 922, 933
+
+```{R}
+
+library(DT)
+library(readxl)
+
+df <- read_excel("/Users/dshin/Dropbox/Lancet/cat101/finishing/phase4_predictions_t1.xlsx")
+datatable(df,
+    filter = "top",
+    options = list(
+        scrollY = "300px",   # Set a max height with vertical scrolling
+        pageLength = 5,      # Show only 5 rows per page
+        lengthMenu = c(5, 10, 20, 50),  # Dropdown to adjust rows displayed
+        autoWidth = FALSE
+    )
+)
+
+```
+
+
+## Step 5, Phaco (6)
+- Currently missing values for 5 cases: 278, 292, 295, 807, 830
+- About 10 cases showing odd value
+```{R}
+
+library(DT)
+library(readxl)
+
+df <- read_excel("/Users/dshin/Dropbox/Lancet/cat101/finishing/phase5_predictions_1t.xlsx")
+datatable(df,
+    filter = "top",
+    options = list(
+        scrollY = "300px",   # Set a max height with vertical scrolling
+        pageLength = 5,      # Show only 5 rows per page
+        lengthMenu = c(5, 10, 20, 50),  # Dropdown to adjust rows displayed
+        autoWidth = FALSE
+    )
+)
+
+```
+
+## Step 9, Viscous agent removal (7)
+
+- About 10 cases showing odd values
+```{R}
+
+library(DT)
+library(readxl)
+
+df <- read_excel("/Users/dshin/Dropbox/Lancet/cat101/finishing/phase9_predictions_1t.xlsx")
+datatable(df,
+    filter = "top",
+    options = list(
+        scrollY = "300px",   # Set a max height with vertical scrolling
+        pageLength = 5,      # Show only 5 rows per page
+        lengthMenu = c(5, 10, 20, 50),  # Dropdown to adjust rows displayed
+        autoWidth = FALSE
+    )
+)
+
+```
+
+
+## Step 10, Tonifying (8)
+- About 50 cases showing odd values
+- Probably d/t error in Phase9
+
+```{R}
+
+library(DT)
+library(readxl)
+
+df <- read_excel("/Users/dshin/Dropbox/Lancet/cat101/finishing/phase10_predictions_1t.xlsx")
+datatable(df,
+    filter = "top",
+    options = list(
+        scrollY = "300px",   # Set a max height with vertical scrolling
+        pageLength = 5,      # Show only 5 rows per page
+        lengthMenu = c(5, 10, 20, 50),  # Dropdown to adjust rows displayed
+        autoWidth = FALSE
+    )
+)
+
+```
+
+
+## Leftover
+- Phase 6. Irrigation and aspiration ()
+
+- Phase 7. Capsule polishing ()
+
+- Phase 2.2. Viscous agent injection II ()
+
+
+
+
+## Summary
+
+```{R}
+library(DT)
+library(readxl)
+
+# Data for the table
+step_data <- data.frame(
+  Step = c("Step 1", "Step 8", "Step 2", "Step 3", 
+  "Step 4", "Step 5", "Step 9", "Step 10",
+  "Step 6","Step 7","Step 2.2"),
+  Description1 = c(
+    "Incision", 
+    "IOL insertion", 
+    "VA injection1", 
+    "Rhexis", 
+    "Hydrodissection", 
+    "Phaco", 
+    "VA removal", 
+    "Tonifying",
+    "I/A","Polishing","VA2"
+  ),
+  Description2 = c(
+    "Max diff : 291 frames, Good", 
+    "Max diff : 371 frames, Good", 
+    "About 10 cases of odd values", 
+    "About 10 cases of odd values", 
+    "About 7 cases showing odd value", 
+    "About 10 cases showing odd value", 
+    "About 10 cases showing odd values", 
+    "About 50 cases showing odd values",
+    "Depend on Step 5",
+    "Depend on Step 5",
+    "Depend on Step 6"
+  )
+)
+
+# Generate interactive table using DT
+datatable(step_data, 
+          options = list(
+            scrollY = "300px",   # Set max height with vertical scrolling
+            pageLength = 6,      # Show only 5 rows per page
+            lengthMenu = c(6, 12),  # Dropdown to adjust rows displayed
+            autoWidth = FALSE
+          ))
+
+```
+
+## Next Step
+- find cause of failure & update
+
+
+
+
+
+##
+
+
+
+2.1 Matching Interval in the Data:
+
+- Creating a Mask (Formatting):
+- The function applies a lambda function on the "Summarized Intervals" column of the instrument data. This lambda checks if the interval stored in each row:
+
+- Is a list with exactly two elements.
+
+- Has the same start and end values (and types) as the candidate interval.
+
+- Purpose of the Mask:
+This boolean mask identifies the rows where the interval exactly matches the candidate interval being evaluated.

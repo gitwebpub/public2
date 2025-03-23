@@ -1,0 +1,118 @@
+/* Override centering for the authors block */
+.reveal .quarto-title-block .quarto-title-authors {
+    display: flex !important;
+    justify-content: flex-start !important;  /* Align authors to the left */
+    align-items: flex-start !important; /* Ensure vertical left alignment */
+    width: 100% !important;
+}
+
+/* Ensure author name inside the block is left-aligned */
+.reveal .quarto-title-author-name {
+    font-size: 0.8em !important;
+    text-align: left !important;
+    font-style: italic;
+    display: block !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+
+ul {
+  font-size: 0.8em; /* Adjust the value as needed */
+}
+
+
+
+/* Adjust date size */
+.reveal .date,
+.reveal .quarto-title-date { /* Ensure date class applies */
+    font-size: 0.7em;
+    text-align: right !important;
+    color: #666;
+}
+
+/* Adjust title alignment */
+.reveal .title {
+    font-size: 2em !important;
+    text-align: left !important;
+}
+
+
+mjx-mn {
+    font-family: "Neo-Euler", "Euler", serif !important;
+}
+
+.hl1 {
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-size: 0.8em !important;
+	background-color: #ffeb3b !important;
+	font-weight: bold;
+	color: #000 !important;
+  /* padding: 2px 5px; */
+  /* border-radius: 3px; */
+}
+
+/* 
+.reveal .title {
+  font-size: 2em !important;
+  text-align: left !important;
+/*   white-space: nowrap; /* Prevents line break */
+
+
+
+.reveal p {
+    font-size: 0.7em; /* Adjust as needed */
+}
+
+/* 
+.hover-image img {
+    transition: transform 0.3s ease-in-out;
+}
+
+.hover-image img:hover {
+    transform: scale(5); /* Adjust the scale factor as needed */
+
+img[width="40"] {
+    transition: transform 0.3s ease-in-out;
+}
+
+img[width="40"]:hover {
+    transform: scale(10);
+}
+
+
+
+
+
+/* Apply to all h2 that contain*/
+h2:first-child, h3:first-child {
+  color: #003876 !important;
+  font-size: 1em !important;
+  font-weight: bold !important;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+/* Reduce font size for DataTables */
+.dataTables_wrapper {
+    font-size: 0.7em;  /* Adjust font size */}
+
+.dataTable td, .dataTable th {
+    padding: 4px;  /* Reduce padding */}
+
+
+/* Adjust width of the second column */
+.dataTable td:nth-child(2), 
+.dataTable th:nth-child(2) {
+    width: 70px; /* Adjust this value as needed */
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Show "..." for overflowed content */
+}
+/* Align all table cells (td) and headers (th) to the left */
+.dataTable td, .dataTable th {
+    text-align: left !important;
+}
+
+
