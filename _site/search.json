@@ -1,0 +1,121 @@
+[
+  {
+    "objectID": "init_Mar23.html#recap",
+    "href": "init_Mar23.html#recap",
+    "title": "Data Review Meeting",
+    "section": "Recap",
+    "text": "Recap\n\nNeed to work on:\nStep 2, Viscous agent injection1 (3)\nStep 3, Rhexis (4)\nStep 4, Hydrodissection (5)\nStep 5, Phaco (6)\nStep 9, Viscous agent removal (7)\nStep 10, Tonifying (8)"
+  },
+  {
+    "objectID": "init_Mar23.html#logic3",
+    "href": "init_Mar23.html#logic3",
+    "title": "Data Review Meeting",
+    "section": "logic3",
+    "text": "logic3\nIn essence, logic3 is a custom routine to:\n\nIdentify intervals between Phase 1 and Phase 8.\nEvaluate each interval to see if there is enough evidence (using the “i07_Cannula” data) that the interval represents the start of Phase 2.\nReturn the interval and a measure (absolute difference) indicating how close its start is to a reference frame value."
+  },
+  {
+    "objectID": "init_Mar23.html#magic-behind-the-scenes",
+    "href": "init_Mar23.html#magic-behind-the-scenes",
+    "title": "Data Review Meeting",
+    "section": "Magic behind the scenes",
+    "text": "Magic behind the scenes\nThe evaluation process within the logic3 function is focused on examining a set of candidate intervals to determine which one is most likely to represent the start of Phase 2. Here’s a detailed breakdown of how this evaluation works:\n\nFiltering Intervals:\n\n\nInterval Validity: First, the function limits the candidate intervals to only those that start after the Phase 1 start (phase1_start) and before the Phase 8 start (phase8_start). This ensures that only intervals within the expected window are considered.\n\n\nIterating Over Valid Intervals:\n\n\nFor each valid interval (represented as a tuple (start, end)), the function performs the following steps:"
+  },
+  {
+    "objectID": "init_Mar23.html#magic-behind-the-scenes-1",
+    "href": "init_Mar23.html#magic-behind-the-scenes-1",
+    "title": "Data Review Meeting",
+    "section": "Magic behind the scenes",
+    "text": "Magic behind the scenes\n2.2 Counting Instrument Evidence:\n\nExtracting Data:\n\nUsing the mask, the function filters the DataFrame to obtain the subset of rows that match the candidate interval.\n\nSumming the Evidence:\n\nIt then sums the values in the “i07_Cannula” column for those rows. This sum (stored in i07_count) represents the amount of evidence (i.e., the count of i07_Cannula occurrences) within the candidate interval."
+  },
+  {
+    "objectID": "init_Mar23.html#magic-behind-the-scenes-2",
+    "href": "init_Mar23.html#magic-behind-the-scenes-2",
+    "title": "Data Review Meeting",
+    "section": "Magic behind the scenes",
+    "text": "Magic behind the scenes\n2.3 Evaluating the Evidence Threshold:\n2.3.1 Threshold Check:\n\nThe function checks whether the summed evidence (i07_count) meets or exceeds a minimum threshold (min_evidence, defaulting to 2).\n\n2.3.2 Selection Decision:\n\nIf the evidence is sufficient (i.e., i07_count+ i09_count &gt;= min_evidence), that candidate interval is selected as the valid interval for Phase 2.\nThe loop then breaks, ensuring that the earliest valid interval (based on the order of the list) is chosen."
+  },
+  {
+    "objectID": "init_Mar23.html#magic-behind-the-scenes-3",
+    "href": "init_Mar23.html#magic-behind-the-scenes-3",
+    "title": "Data Review Meeting",
+    "section": "Magic behind the scenes",
+    "text": "Magic behind the scenes\n3 Finalizing the Evaluation:\n3.1 Computing Difference:\n\nOnce a valid interval is found, the function calculates the absolute difference between the start of this interval and a provided reference frame value (ref_value). This metric (abs_diff) can be used to gauge how close the detected phase start is to an expected reference.\n\n3.2 Return Value: - Finally, the function returns a tuple with:\n- The absolute difference (abs_diff).\n\n- The selected interval (start, end).\n\nIf no interval meets the required conditions, the function returns (None, None) to indicate that no valid interval was found."
+  },
+  {
+    "objectID": "init_Mar23.html#applying",
+    "href": "init_Mar23.html#applying",
+    "title": "Data Review Meeting",
+    "section": "Applying",
+    "text": "Applying\n# Apply logic3()\n        abs_diff, selected_interval = summarizer.logic3(\n            corrected_intervals,\n            ref_value_phase2,\n            case_data,\n            phase1_start,\n            phase8_start,\n            min_evidence=2, // \n            case_id=case_id\n        )\n    if i07_count &gt;= min_evidence:\n        selected_interval = (start, end)\n        print(f\"✅ Found valid interval at {selected_interval} (i07_Cannula = {i07_count})\")\n        break  # Select the earliest valid interval"
+  },
+  {
+    "objectID": "init_Mar23.html#step-2-viscous-agent-injection1-3",
+    "href": "init_Mar23.html#step-2-viscous-agent-injection1-3",
+    "title": "Data Review Meeting",
+    "section": "Step 2, Viscous agent injection1 (3)",
+    "text": "Step 2, Viscous agent injection1 (3)\n\n82/86 Successful : 95.35 %\n830: Out of focus ; 909: Poor image quality\nFailed : 522, 693, 931, 726"
+  },
+  {
+    "objectID": "init_Mar23.html#step-3-rhexis-4",
+    "href": "init_Mar23.html#step-3-rhexis-4",
+    "title": "Data Review Meeting",
+    "section": "Step 3, Rhexis (4)",
+    "text": "Step 3, Rhexis (4)\n\n??/82 Cases.\nCurrently missing values for 4 cases: 292, 807, 922, 933"
+  },
+  {
+    "objectID": "init_Mar23.html#step-4-hydrodissection-5",
+    "href": "init_Mar23.html#step-4-hydrodissection-5",
+    "title": "Data Review Meeting",
+    "section": "Step 4, Hydrodissection (5)",
+    "text": "Step 4, Hydrodissection (5)\n\nCurrently missing values for 4 cases: 292, 807, 922, 933"
+  },
+  {
+    "objectID": "init_Mar23.html#step-5-phaco-6",
+    "href": "init_Mar23.html#step-5-phaco-6",
+    "title": "Data Review Meeting",
+    "section": "Step 5, Phaco (6)",
+    "text": "Step 5, Phaco (6)\n\nCurrently missing values for 5 cases: 278, 292, 295, 807, 830\nAbout 10 cases showing odd value"
+  },
+  {
+    "objectID": "init_Mar23.html#step-9-viscous-agent-removal-7",
+    "href": "init_Mar23.html#step-9-viscous-agent-removal-7",
+    "title": "Data Review Meeting",
+    "section": "Step 9, Viscous agent removal (7)",
+    "text": "Step 9, Viscous agent removal (7)\n\nAbout 10 cases showing odd values"
+  },
+  {
+    "objectID": "init_Mar23.html#step-10-tonifying-8",
+    "href": "init_Mar23.html#step-10-tonifying-8",
+    "title": "Data Review Meeting",
+    "section": "Step 10, Tonifying (8)",
+    "text": "Step 10, Tonifying (8)\n\nAbout 50 cases showing odd values\nProbably d/t error in Phase9"
+  },
+  {
+    "objectID": "init_Mar23.html#leftover",
+    "href": "init_Mar23.html#leftover",
+    "title": "Data Review Meeting",
+    "section": "Leftover",
+    "text": "Leftover\n\nPhase 6. Irrigation and aspiration ()\nPhase 7. Capsule polishing ()\nPhase 2.2. Viscous agent injection II ()"
+  },
+  {
+    "objectID": "init_Mar23.html#summary",
+    "href": "init_Mar23.html#summary",
+    "title": "Data Review Meeting",
+    "section": "Summary",
+    "text": "Summary"
+  },
+  {
+    "objectID": "init_Mar23.html#next-step",
+    "href": "init_Mar23.html#next-step",
+    "title": "Data Review Meeting",
+    "section": "Next Step",
+    "text": "Next Step\n\nfind cause of failure & update"
+  },
+  {
+    "objectID": "init_Mar23.html#section",
+    "href": "init_Mar23.html#section",
+    "title": "Data Review Meeting",
+    "section": "",
+    "text": "2.1 Matching Interval in the Data:\n\nCreating a Mask (Formatting):\nThe function applies a lambda function on the “Summarized Intervals” column of the instrument data. This lambda checks if the interval stored in each row:\nIs a list with exactly two elements.\nHas the same start and end values (and types) as the candidate interval.\nPurpose of the Mask: This boolean mask identifies the rows where the interval exactly matches the candidate interval being evaluated."
+  }
+]

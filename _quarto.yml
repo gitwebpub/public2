@@ -1,0 +1,15 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "R Progress Analysis"
+  navbar:
+    left:
+      - text: "Analysis"
+        file: init_Mar23.qmd
+
+format:
+  html:
+    theme: cosmo
+    toc: true

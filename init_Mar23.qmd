@@ -77,11 +77,11 @@ start after the Phase 1 start (phase1_start) and before the Phase 8 start (phase
 
 2.3.1 Threshold Check:
 
-- The function checks whether the summed evidence (i07_count) meets or exceeds a minimum threshold ([min_evidence]{.hl1}, defaulting to [1]{.hl1}).
+- The function checks whether the summed evidence (i07_count) meets or exceeds a minimum threshold ([min_evidence]{.hl1}, defaulting to [2]{.hl1}).
 
 2.3.2 Selection Decision:
 
-- If the evidence is sufficient (i.e., i07_count >= min_evidence), 
+- If the evidence is sufficient (i.e., i07_count+ i09_count >= min_evidence), 
 	that candidate interval is selected as the valid interval for Phase 2.
 
 
@@ -113,7 +113,7 @@ start after the Phase 1 start (phase1_start) and before the Phase 8 start (phase
             case_data,
             phase1_start,
             phase8_start,
-            min_evidence=1, // 
+            min_evidence=2, // 
             case_id=case_id
         )
 ```
@@ -129,8 +129,10 @@ start after the Phase 1 start (phase1_start) and before the Phase 8 start (phase
 
 ## Step 2, Viscous agent injection1 (3)
 
-- About 10 cases, Giving odd values 
-- 830, 292, 807, 295, 270, 278, ..
+- 82/86 Successful : 95.35 % 
+- 830: Out of focus ; 909: Poor image quality
+- Failed : 522, 693, 931, 726
+
 
 ```{R}
 
@@ -150,18 +152,9 @@ datatable(df,
 
 ```
 
-## Step 2, Viscous agent injection1 (3)
-- We decided to remove (830) for it has out of focus.
-- We decided to include i09 for (292), 
-- 807, 
-- 295, 
-- 270, 
-- 278,
-- 889,
-
-
 
 ## Step 3, Rhexis (4)
+- ??/82 Cases.
 - Currently missing values for 4 cases: 292, 807, 922, 933
 
 
@@ -171,7 +164,7 @@ datatable(df,
 library(DT)
 library(readxl)
 
-df <- read_excel("/Users/dshin/Dropbox/Lancet/cat101/finishing/phase3_predictions_1t.xlsx")
+df <- read_excel("/Users/dshin/Dropbox/Lancet/cat101/finishing/phase3_predictions_1t_debugging.xlsx")
 datatable(df,
     filter = "top",
     options = list(
