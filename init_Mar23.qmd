@@ -222,7 +222,9 @@ datatable(df,
 
 ## Step 9, Viscous agent removal (7)
 
-- About 10 cases showing odd values
+- 93.90 % (77/82)
+- obscure : 908, 853, 350, 738, 294
+
 ```{R}
 
 library(DT)
@@ -243,8 +245,8 @@ datatable(df,
 
 
 ## Step 10, Stromal Injection (8)
-- About 50 cases showing odd values
-- Probably d/t error in Phase9
+- 95.12 % (78/82)
+- obscure : 925, 863, 850, 799
 
 ```{R}
 
