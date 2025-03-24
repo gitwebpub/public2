@@ -131,7 +131,7 @@ start after the Phase 1 start (phase1_start) and before the Phase 8 start (phase
 
 - 82/86 Successful : 95.35 % 
 - 830: Out of focus ; 909: Poor image quality
-- Failed : 522, 693, 931, 726
+- Failed : 840, 269, 278, 807
 
 
 ```{R}
@@ -154,7 +154,7 @@ datatable(df,
 
 
 ## Step 3, Rhexis (4)
-- ??/82 Cases.
+- 71/82 Cases.
 - Currently missing values for 4 cases: 292, 807, 922, 933
 
 
@@ -228,7 +228,7 @@ datatable(df,
 library(DT)
 library(readxl)
 
-df <- read_excel("/Users/dshin/Dropbox/Lancet/cat101/finishing/phase9_predictions_1t.xlsx")
+df <- read_excel("/Users/dshin/Dropbox/Lancet/cat101/finishing/phase9_predictions_2.xlsx")
 datatable(df,
     filter = "top",
     options = list(
@@ -242,7 +242,7 @@ datatable(df,
 ```
 
 
-## Step 10, Tonifying (8)
+## Step 10, Stromal Injection (8)
 - About 50 cases showing odd values
 - Probably d/t error in Phase9
 
@@ -251,7 +251,7 @@ datatable(df,
 library(DT)
 library(readxl)
 
-df <- read_excel("/Users/dshin/Dropbox/Lancet/cat101/finishing/phase10_predictions_1t.xlsx")
+df <- read_excel("/Users/dshin/Dropbox/Lancet/cat101/finishing/phase10_predictions_2.xlsx")
 datatable(df,
     filter = "top",
     options = list(
