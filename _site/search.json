@@ -53,14 +53,14 @@
     "href": "init_Mar23.html#step-2-viscous-agent-injection1-3",
     "title": "Data Review Meeting",
     "section": "Step 2, Viscous agent injection1 (3)",
-    "text": "Step 2, Viscous agent injection1 (3)\n\n82/86 Successful : 95.35 %\n830: Out of focus ; 909: Poor image quality\nFailed : 522, 693, 931, 726"
+    "text": "Step 2, Viscous agent injection1 (3)\n\n82/86 Successful : 95.35 %\n830: Out of focus ; 909: Poor image quality\nFailed : 840, 269, 278, 807"
   },
   {
     "objectID": "init_Mar23.html#step-3-rhexis-4",
     "href": "init_Mar23.html#step-3-rhexis-4",
     "title": "Data Review Meeting",
     "section": "Step 3, Rhexis (4)",
-    "text": "Step 3, Rhexis (4)\n\n??/82 Cases.\nCurrently missing values for 4 cases: 292, 807, 922, 933"
+    "text": "Step 3, Rhexis (4)\n\n71/82 Cases.\nCurrently missing values for 4 cases: 292, 807, 922, 933"
   },
   {
     "objectID": "init_Mar23.html#step-4-hydrodissection-5",
@@ -84,11 +84,11 @@
     "text": "Step 9, Viscous agent removal (7)\n\nAbout 10 cases showing odd values"
   },
   {
-    "objectID": "init_Mar23.html#step-10-tonifying-8",
-    "href": "init_Mar23.html#step-10-tonifying-8",
+    "objectID": "init_Mar23.html#step-10-stromal-injection-8",
+    "href": "init_Mar23.html#step-10-stromal-injection-8",
     "title": "Data Review Meeting",
-    "section": "Step 10, Tonifying (8)",
-    "text": "Step 10, Tonifying (8)\n\nAbout 50 cases showing odd values\nProbably d/t error in Phase9"
+    "section": "Step 10, Stromal Injection (8)",
+    "text": "Step 10, Stromal Injection (8)\n\nAbout 50 cases showing odd values\nProbably d/t error in Phase9"
   },
   {
     "objectID": "init_Mar23.html#leftover",
