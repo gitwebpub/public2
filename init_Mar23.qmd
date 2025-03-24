@@ -296,21 +296,22 @@ step_data <- data.frame(
     "Hydrodissection", 
     "Phaco", 
     "VA removal", 
-    "Tonifying",
-    "I/A","Polishing","VA2"
+    "Stromal Injection",
+    "I/A",
+    "Polishing","VA2"
   ),
   Description2 = c(
-    "Max diff : 291 frames, Good", 
-    "Max diff : 371 frames, Good", 
-    "About 10 cases of odd values", 
-    "About 10 cases of odd values", 
-    "About 7 cases showing odd value", 
-    "About 10 cases showing odd value", 
-    "About 10 cases showing odd values", 
-    "About 50 cases showing odd values",
-    "Depend on Step 5",
-    "Depend on Step 5",
-    "Depend on Step 6"
+    "Max diff : 291 frames, Good :)", 
+    "Max diff : 371 frames, Good :)", 
+    "82/86 Successful : 95.35 %", 
+    "71/82 Cases.", 
+    "_Hydrodissection odd value", 
+    "_Phaco ", 
+    "93.90 % (77/82)", 
+    "95.12 % (78/82)",
+    "I/A Depend on Step 5",
+    "*Polishing and Positioning Depend on Step 5",
+    "*VA2 injection Depend on Step 6/8"
   )
 )
 
