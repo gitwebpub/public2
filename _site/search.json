@@ -60,35 +60,35 @@
     "href": "init_Mar23.html#step-3-rhexis-4",
     "title": "Data Review Meeting",
     "section": "Step 3, Rhexis (4)",
-    "text": "Step 3, Rhexis (4)\n\n71/82 Cases.\nCurrently missing values for 4 cases: 292, 807, 922, 933"
+    "text": "Step 3, Rhexis (4)\n\n71/82 Cases. ?\n? 4 cases: 292, 807, 922, 933"
   },
   {
     "objectID": "init_Mar23.html#step-4-hydrodissection-5",
     "href": "init_Mar23.html#step-4-hydrodissection-5",
     "title": "Data Review Meeting",
     "section": "Step 4, Hydrodissection (5)",
-    "text": "Step 4, Hydrodissection (5)\n\nCurrently missing values for 4 cases: ___33"
+    "text": "Step 4, Hydrodissection (5)\n\nCurrently missing values for 4 cases: ___33\n\n{R}\nlibrary(DT) library(readxl)\ndf &lt;- read_excel(“….”) datatable(df, filter = “top”, options = list( scrollY = “300px”, # Set a max height with vertical scrolling pageLength = 5, # Show only 5 rows per page lengthMenu = c(5, 10, 20, 50), # Dropdown to adjust rows displayed autoWidth = FALSE ) )"
   },
   {
-    "objectID": "init_Mar23.html#step-5-phaco-6",
-    "href": "init_Mar23.html#step-5-phaco-6",
+    "objectID": "init_Mar23.html#step-5-phaco-6-finished",
+    "href": "init_Mar23.html#step-5-phaco-6-finished",
     "title": "Data Review Meeting",
-    "section": "Step 5, Phaco (6)",
-    "text": "Step 5, Phaco (6)\n\nCurrently missing values for 5 cases: 278, 292, 295, 807, 830\nAbout 10 cases showing odd value"
+    "section": "Step 5, Phaco (6) FINISHED",
+    "text": "Step 5, Phaco (6) FINISHED\n\n100% (82/82)"
   },
   {
-    "objectID": "init_Mar23.html#step-9-viscous-agent-removal-7",
-    "href": "init_Mar23.html#step-9-viscous-agent-removal-7",
+    "objectID": "init_Mar23.html#step-9-viscous-agent-removal-7-finished",
+    "href": "init_Mar23.html#step-9-viscous-agent-removal-7-finished",
     "title": "Data Review Meeting",
-    "section": "Step 9, Viscous agent removal (7)",
-    "text": "Step 9, Viscous agent removal (7)\n\n93.90 % (77/82)\nobscure : 908, 853, 350, 738, 294"
+    "section": "Step 9, Viscous agent removal (7) FINISHED",
+    "text": "Step 9, Viscous agent removal (7) FINISHED\n\n93.90 % (77/82)\nobscure : 908, 853, 350, 738, 294"
   },
   {
-    "objectID": "init_Mar23.html#step-10-stromal-injection-8",
-    "href": "init_Mar23.html#step-10-stromal-injection-8",
+    "objectID": "init_Mar23.html#step-10-stromal-injection-8-finished",
+    "href": "init_Mar23.html#step-10-stromal-injection-8-finished",
     "title": "Data Review Meeting",
-    "section": "Step 10, Stromal Injection (8)",
-    "text": "Step 10, Stromal Injection (8)\n\n95.12 % (78/82)\nobscure : 925, 863, 850, 799"
+    "section": "Step 10, Stromal Injection (8) FINISHED",
+    "text": "Step 10, Stromal Injection (8) FINISHED\n\n95.12 % (78/82)\nobscure : 925, 863, 850, 799"
   },
   {
     "objectID": "init_Mar23.html#leftover",

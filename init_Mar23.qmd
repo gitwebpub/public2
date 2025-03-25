@@ -154,8 +154,8 @@ datatable(df,
 
 
 ## Step 3, Rhexis (4)
-- 71/82 Cases.
-- Currently missing values for 4 cases: 292, 807, 922, 933
+- 71/82 Cases. ?
+- ? 4 cases: 292, 807, 922, 933
 
 
 
@@ -180,12 +180,35 @@ datatable(df,
 ## Step 4, Hydrodissection (5)
 - Currently missing values for 4 cases: ___33
 
+{R}
+
+library(DT)
+library(readxl)
+
+df <- read_excel("....")
+datatable(df,
+    filter = "top",
+    options = list(
+        scrollY = "300px",   # Set a max height with vertical scrolling
+        pageLength = 5,      # Show only 5 rows per page
+        lengthMenu = c(5, 10, 20, 50),  # Dropdown to adjust rows displayed
+        autoWidth = FALSE
+    )
+)
+
+
+
+
+## Step 5, Phaco (6) FINISHED
+
+- 100% (82/82)
+
 ```{R}
 
 library(DT)
 library(readxl)
 
-df <- read_excel("/Users/dshin/Dropbox/Lancet/cat101/finishing/phase4_predictions_t1.xlsx")
+df <- read_excel("/Users/dshin/Dropbox/Lancet/cat101/finishing/phase5_predictions_3_Phaco_f.xlsx")
 datatable(df,
     filter = "top",
     options = list(
@@ -198,29 +221,7 @@ datatable(df,
 
 ```
 
-
-## Step 5, Phaco (6)
-- Currently missing values for 5 cases: 278, 292, 295, 807, 830
-- About 10 cases showing odd value
-```{R}
-
-library(DT)
-library(readxl)
-
-df <- read_excel("/Users/dshin/Dropbox/Lancet/cat101/finishing/phase5_predictions_1t.xlsx")
-datatable(df,
-    filter = "top",
-    options = list(
-        scrollY = "300px",   # Set a max height with vertical scrolling
-        pageLength = 5,      # Show only 5 rows per page
-        lengthMenu = c(5, 10, 20, 50),  # Dropdown to adjust rows displayed
-        autoWidth = FALSE
-    )
-)
-
-```
-
-## Step 9, Viscous agent removal (7)
+## Step 9, Viscous agent removal (7) FINISHED
 
 - 93.90 % (77/82)
 - obscure : 908, 853, 350, 738, 294
@@ -244,7 +245,7 @@ datatable(df,
 ```
 
 
-## Step 10, Stromal Injection (8)
+## Step 10, Stromal Injection (8) FINISHED
 - 95.12 % (78/82)
 - obscure : 925, 863, 850, 799
 
