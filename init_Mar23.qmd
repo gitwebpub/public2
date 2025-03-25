@@ -164,7 +164,7 @@ datatable(df,
 library(DT)
 library(readxl)
 
-df <- read_excel("/Users/dshin/Dropbox/Lancet/cat101/finishing/phase3_predictions_1t_debugging.xlsx")
+df <- read_excel("/Users/dshin/Dropbox/Lancet/cat101/finishing/phase3_predictions_2.xlsx")
 datatable(df,
     filter = "top",
     options = list(
@@ -178,7 +178,7 @@ datatable(df,
 ```
 
 ## Step 4, Hydrodissection (5)
-- Currently missing values for 4 cases: 292, 807, 922, 933
+- Currently missing values for 4 cases: ___33
 
 ```{R}
 
